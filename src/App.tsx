@@ -1,6 +1,6 @@
 import { h } from 'preact';
+import Editor from './components/Editor';
 
-const test = (num: number) => num;
-const App = () => <h1>This is a typescript test {test(1)}</h1>;
+const App = () => <Editor/>;
 
 export default App;
