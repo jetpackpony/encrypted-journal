@@ -1,5 +1,9 @@
 const password = "1234";
 
+export function getRandomBytes(amount: number = 16) {
+  return window.crypto.getRandomValues(new Uint8Array(amount));
+}
+
 export async function deriveKey(pass: string, salt: Uint8Array): Promise<CryptoKey> {
   const enc = (new TextEncoder()).encode(pass);
   const imported = await window.crypto.subtle.importKey(
