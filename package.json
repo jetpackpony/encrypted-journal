@@ -16,11 +16,15 @@
   },
   "dependencies": {
     "preact": "^10.4.5",
-    "preact-compat": "^3.19.0"
+    "preact-compat": "^3.19.0",
+    "recoil": "^0.0.10"
   },
   "alias": {
     "react": "preact/compat",
     "react-dom/test-utils": "preact/test-utils",
     "react-dom": "preact/compat"
-  }
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
 }

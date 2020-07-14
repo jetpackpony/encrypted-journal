@@ -1,4 +1,5 @@
 import { h, render } from 'preact';
+import { RecoilRoot } from 'recoil';
 import App from './App';
 
-render(<App/>, document.querySelector("#root"));
+render(<RecoilRoot><App/></RecoilRoot>, document.querySelector("#root"));
