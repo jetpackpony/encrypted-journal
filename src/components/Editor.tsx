@@ -5,7 +5,7 @@ import { cryptoKeyState } from '../store';
 import { encrypt, decrypt } from '../crypto';
 
 const Editor = () => {
-  const cryptoKey = useRecoilValue(cryptoKeyState);
+  const { key: cryptoKey } = useRecoilValue(cryptoKeyState);
   const [text, setText] = useState("");
   const updateText = (e) => {
     setText(e.target.value);

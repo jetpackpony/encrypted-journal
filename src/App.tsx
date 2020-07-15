@@ -5,14 +5,21 @@ import { cryptoKeyState } from './store';
 import { deriveKey, getRandomBytes } from './crypto';
 import EnterPassword from './components/EnterPassword';
 
-const salt = getRandomBytes();
-
 const App = () => {
-  const [key, setCryptoKey] = useRecoilState(cryptoKeyState);
+  const [{ key, salt }, setCryptoKey] = useRecoilState(cryptoKeyState);
+  if (!salt) {
+    fetch('/salt')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCryptoKey({ key, salt: data.salt });
+      });
+    return "Loading...";
+  }
   const onPasswordSubmit = (password: string): void => {
-    deriveKey(password, salt)
+    deriveKey(password, new Uint8Array(salt))
       .then((res) => {
-        setCryptoKey(res);
+        setCryptoKey({ key: res, salt });
       });
   };
   return (
