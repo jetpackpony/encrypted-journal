@@ -4,17 +4,19 @@
   "description": "",
   "main": "dist/index.html",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "mkdir -p dist && cp static/* dist/ && parcel src/index.html",
+    "build": "mkdir -p dist && cp static/* dist/ && parcel build src/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "msw": "^0.19.5",
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.9.6"
   },
   "dependencies": {
+    "localforage": "^1.7.4",
     "preact": "^10.4.5",
     "preact-compat": "^3.19.0",
     "recoil": "^0.0.10"
