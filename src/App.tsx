@@ -3,17 +3,23 @@ import { RecoilRoot, useRecoilState } from 'recoil';
 import Editor from './components/Editor';
 import { cryptoKeyState } from './store';
 import { deriveKey, getRandomBytes } from './crypto';
+import EnterPassword from './components/EnterPassword';
+
+const salt = getRandomBytes();
 
 const App = () => {
   const [key, setCryptoKey] = useRecoilState(cryptoKeyState);
-  if (!key) {
-    const salt = getRandomBytes();
-    deriveKey("1234", salt)
+  const onPasswordSubmit = (password: string): void => {
+    deriveKey(password, salt)
       .then((res) => {
         setCryptoKey(res);
       });
-  }
-  return (key) ? <Editor /> : "Loading...";
+  };
+  return (
+    (key)
+      ? <Editor />
+      : <EnterPassword onSubmit={onPasswordSubmit} />
+  );
 };
 
 export default App;
