@@ -1,4 +1,4 @@
-export function getRandomBytes(amount: number = 16) {
+export function getRandomBytes(amount: number = 16): Uint8Array {
   return window.crypto.getRandomValues(new Uint8Array(amount));
 }
 
